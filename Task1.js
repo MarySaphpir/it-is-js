@@ -42,8 +42,12 @@ const arrayShips = [1, 1, 1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1];
 function checkShipsNumber(array) {
     let number = 0;
 
-    array.filter((elem =>  elem === 1 && elem - 1 !== 1 ? number : number += 1));
-    return number;
+    function checkShipsNumber1(array) {
+        let number = 0;
+
+        array.filter((elem, index) => elem === 1 && array[index - 1] === 0 || index === 0 ? number += 1 : number);
+        return number;
+    }
 }
 
 console.log(checkShipsNumber(arrayShips));
