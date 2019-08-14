@@ -1,7 +1,7 @@
 // Task 1
 
 function copyArray(array) {
-    return array.slice();
+    return array.concat(array);
 }
 
 console.log(copyArray([4, 7, 9, 10]));
@@ -27,13 +27,10 @@ let dataUsers = [
 ];
 
 function findEqualData(array, data) {
-    let equalData = [];
 
-    array.filter(elem => data.filter(el => {
-       elem.id === el.id ? equalData.push(elem) : equalData;
+    return array.filter(elem => data.some(el => {
+        return el.id === elem.id;
     }));
-
-    return equalData;
 }
 
 console.log(findEqualData(dataObjects, dataUsers));
