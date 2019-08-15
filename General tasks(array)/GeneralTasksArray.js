@@ -4,30 +4,33 @@
 const array = [1, 2, 3, 'I', 'am', 'array'];
 
 function duplicateArray(arr) {
-    return arr.filter((item, index) => arr.indexOf(item) === index);
+    return arr.concat(arr);
 }
 
 duplicateArray(array);
 
 // Написать программу для получения массива объектов состоящего из общих элементов двух массивов
 
-const arrayOfObjFirst = [
-    { id:3 },
-    { id:0 },
-    { id:1 }
+const arrayWithObjects1 = [
+    {id:3},
+    {id:35},
+    {id:38},
+    {id:0},
+    {id:11}
 ];
-const arrayOfObjSecond = [
-    { id:1 },
-    { id:2 },
-    { id:3 }
+const arrayWithObjects2 = [
+    {id:11},
+    {id:23},
+    {id:53},
+    {id:3},
+    {id:35}
 ];
 
+function getEqualId(arrayObjects1, arrayObjects2) {
+    return arrayObjects1.filter(objElem => arrayObjects2.some(objEl => objEl.id === objElem.id));
+}
 
-let arr3 = arrayOfObjFirst.filter(function(id) {
-    return arrayOfObjSecond.includes(id);
-})
-console.log(arr3);
-
+getEqualId(arrayWithObjects1, arrayWithObjects2);
 
 // Нужно написать функцию которая принимает массив пОля, где 1 корабль, 0 вода для морского боя.
 // Она будет вычислять количество кораблей на поле. Массив линейный
@@ -36,17 +39,11 @@ const arrayField = [1, 0, 1, 1, 1, 0, 0, 1, 1];
 
 function shipsOnThefield(arrShips) {
     let sum = 0;
-    nubersShips = arrShips.map(function(number) {
-        if(number === 1) {
-            sum += number;
-        }
-    })
+    arrShips.filter((element, index) => element === 1 && arrShips[index - 1] === 0 || index === 0 ? sum++ : sum);
     return sum;
 }
 
 shipsOnThefield(arrayField);
-
-
 
 // Create a function that returns the sum of the two lowest positive numbers given an array of minimum 4 positive integers.
 // No floats or non-positive integers will be passed.
@@ -75,7 +72,6 @@ function sumTwoSmallestNumbers(numbers) {
 numbers = [19, 5, 42, 2, 77];
 
 sumTwoSmallestNumbers(numbers);
-
 
 // second version
 function sumTwoSmallestNumbers2v(numbers) {  
