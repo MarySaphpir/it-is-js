@@ -67,9 +67,11 @@ Function.prototype.myBind = function(context) {
     return function() {
         var targetArgs = Array.from(arguments);
         if (arguments.length) {
-            return bounderedFunc.aplly(context, args.concat(targetArgs));
+            return bounderedFunc.apply(context, args.concat(targetArgs));
         } else {
             bounderedFunc.call(context);
         }
   };
 };
+
+
