@@ -35,10 +35,9 @@ function timer(num) {
 
 function checkSum(sum, price) {
     return new Promise(function(resolve, reject){
-             sum > price
-                 ? resolve("Success")
-                 : reject("Error");
+        sum > price ? resolve("Success") : reject("Error");
     })
  };
  
  checkSum(20, 2).then(value => console.log(value));
+ 
