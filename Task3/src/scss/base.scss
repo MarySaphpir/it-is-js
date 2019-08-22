@@ -92,14 +92,13 @@ $font-family-primary: 'Helvetica Neue', sans-serif;
     justify-content: space-between;
     max-width: 550px;
     width: 100%;
-    padding-bottom: 5px;
-    min-height: 500px;
+    max-height: 545px;
     background-color: $grey-secondary;
     font-family: $font-family-primary;
     font-style: italic;
 }
 .chat-messages {
-    max-height: 430px;
+    max-height: 425px;
     overflow: scroll;
 }
 .content-title {
@@ -126,7 +125,7 @@ $font-family-primary: 'Helvetica Neue', sans-serif;
 
         &:nth-child(2n) {
         border-radius: 15px 0 15px 15px;
-        margin-left: 200px;
+        margin-left: 50%;
         }
 
         &:not(:last-child) {
@@ -142,6 +141,7 @@ $font-family-primary: 'Helvetica Neue', sans-serif;
  .message-data {
     margin: 0;
     padding: 7px;
+    width: 80%;
  
         &:nth-child(2n) {
             text-align: right;
@@ -166,9 +166,7 @@ input[type="submit"] {
     color: $text-color-white;
     font-weight: bold;
     text-transform: uppercase;
-
  }
-
  
  @media (min-width: 1024px) {
     .wrapper {
@@ -178,7 +176,6 @@ input[type="submit"] {
     }
 
     .aside {
-        background-color: $grey-primary;
         max-width: 300px;
         width: 100%;
         min-height: 100%;
@@ -200,6 +197,7 @@ input[type="submit"] {
         max-width: 724px;
         width: 100%;
         font-size: 17px;
+        min-height: 768px;
     }
 
     .content-header-icon {
@@ -209,8 +207,8 @@ input[type="submit"] {
     }
     .chat-messages {
         max-height: 644px;
-       
     }
+
     .messages-list {
         padding: 5px;
     }
@@ -232,8 +230,7 @@ input[type="submit"] {
         &:nth-child(2n) {
             border-radius: 15px 0 15px 15px;
             margin-left: 270px;
-           
-
+        
             &:before {
                 width: 40px;
                 height: 40px;
@@ -242,15 +239,209 @@ input[type="submit"] {
             }
         }
     
-            &:not(:last-child) {
-                margin-bottom: 23px;
-            }     
+        &:not(:last-child) {
+            margin-bottom: 23px;
+        }     
     }
 
     .form {
         min-height: 65px;
     }
+
     input[type="text"], input[type="submit"] {
         font-size: 16px;
     }
 }
+
+@media (min-width: 1280px) {
+    .wrapper {
+        max-width: 1280px;
+        width: 100%;
+        min-height: 800px;
+    }
+
+    .aside {
+        max-width: 400px;
+        width: 100%;
+        min-height: 100%;
+    }
+
+    .aside-header {
+        min-height: 150px;
+        text-align: center;
+        padding-top: 50px;
+        color: $text-color-header;
+        font-size: 18px;   
+    }
+
+    .list-wrapper {
+        max-height: 600px;
+        
+    }
+    .list-item { 
+        height: 70px;
+        margin-bottom: 50px;
+    }
+
+    .list-item-icon {
+        width: 65px;
+        height: 65px;
+    }
+
+    .chat-content {
+        max-width: 880px;
+        width: 100%;
+        min-height: 800px;
+        font-size: 20px;
+    }
+
+    .chat-messages {
+        max-height: 478px;
+        overflow: scroll;
+    }
+    .chat-content-inner {
+        height: 560px;
+    }
+    .chat-content-header {
+        padding:  50px 0 50px 0;
+    }
+    .content-header-icon {
+        width: 100px;
+        height: 100px;
+    }
+
+    .messages-list {
+        padding: 5px;
+        margin: 0;
+    }
+
+    .message-item {
+        min-width: 450px;
+        padding-top: 10px;
+        width: 100%;
+        &:before {
+            width: 60px;
+            height: 60px;
+           
+        }
+
+        &:nth-child(2n) {
+            margin-left: 400px;
+            padding-left: 10px;
+
+            &:before {
+                width: 60px;
+                height: 60px;
+                float: right;
+            }
+        }
+    
+        &:not(:last-child) {
+            margin-bottom: 15px;
+        }     
+    }
+
+    .form {
+        margin-top: 5px;
+        min-height: 82px;
+    }
+
+    input[type="text"], input[type="submit"] {
+        font-size: 18px;
+    }
+}
+/*@media (min-width: 1680px) {
+    .wrapper {
+        max-width: 1680px;
+        width: 100%;
+        min-height: 1050px;
+    }
+
+    .aside {
+        max-width: 560px;
+        width: 100%;
+        min-height: 100%;
+    }
+
+    .aside-header {
+        min-height: 190px;
+        text-align: center;
+        padding-top: 50px;
+        color: $text-color-header;
+        font-size: 20px;   
+    }
+
+    .list-wrapper {
+        max-height: 600px;
+        
+    }
+    .list-item { 
+        height: 70px;
+        margin-bottom: 50px;
+    }
+
+    .list-item-icon {
+        width: 65px;
+        height: 65px;
+    }
+
+    .chat-content {
+        max-width: 880px;
+        width: 100%;
+        min-height: 800px;
+        font-size: 20px;
+    }
+
+    .chat-messages {
+        max-height: 476px;
+        overflow: scroll;
+    }
+    .chat-content-inner {
+        height: 560px;
+    }
+    .chat-content-header {
+        padding:  50px 0 50px 0;
+    }
+    .content-header-icon {
+        width: 100px;
+        height: 100px;
+    }
+
+    .messages-list {
+        padding: 5px;
+        margin: 0;
+    }
+
+    .message-item {
+        min-width: 450px;
+        padding-top: 10px;
+        width: 100%;
+        &:before {
+            width: 60px;
+            height: 60px;
+           
+        }
+
+        &:nth-child(2n) {
+            margin-left: 400px;
+
+            &:before {
+                width: 60px;
+                height: 60px;
+                float: right;
+            }
+        }
+    
+        &:not(:last-child) {
+            margin-bottom: 15px;
+        }     
+    }
+
+    .form {
+        min-height: 82px;
+    }
+
+    input[type="text"], input[type="submit"] {
+        font-size: 18px;
+    }
+}*/
