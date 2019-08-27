@@ -1,4 +1,5 @@
 /node_modules
+/dist
 
 [Dd]ebug/
 [Dd]ebugPublic/
@@ -35,6 +36,7 @@ bld/
 *.pidb
 *.svclog
 *.scc
+*.lock.json
 
 **/packages/*
 
