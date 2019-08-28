@@ -1,0 +1,18 @@
+%display-space-around {
+    display: flex;
+    justify-content: space-around;
+}
+
+%display-space-between {
+    display: flex;
+    justify-content: space-between;
+}
+%icon-style {
+    display: block;
+    border-radius: 50%;
+}
+
+%button-style {
+    padding: 0;
+    border: none;
+}

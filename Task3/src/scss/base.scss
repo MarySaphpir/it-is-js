@@ -1,32 +1,5 @@
-$grey-primary: rgb(56, 55, 55);
-$grey-secondary: rgb(226, 224, 224);
-$font-size-primary: 14px;
-$text-color-header: rgb(231, 230, 125);
-$text-color-white: rgb(255, 255, 255);
-$bg-color-blue: rgb(45, 181, 245);
-$bg-color-biege: rgb(248, 227, 227);
-$bg-color-orange:  rgb(254, 209, 54);
-$bg-color-pink:  rgb(254, 54, 164);
-$font-family-primary: 'Helvetica Neue', sans-serif;
-
-%display-space-around {
-    display: flex;
-    justify-content: space-around;
-}
-
-%display-space-between {
-    display: flex;
-    justify-content: space-between;
-}
-%icon-style {
-    display: block;
-    border-radius: 50%;
-}
-
-%button-style {
-    padding: 0;
-    border: none;
-}
+@import './variables.scss';
+@import './extends.scss';
 
 .wrapper {
     display: flex;
@@ -37,21 +10,22 @@ $font-family-primary: 'Helvetica Neue', sans-serif;
 .aside {
     background-color: $grey-primary;
     width: 250px;
-}
 
-.aside__header {
+    &__header {
     height: 60px;
     text-align: center;
     padding-top: 40px;
     color: $text-color-header;
-    font-size: 14px;   //
-}
+    font-size: 14px; 
+    }
 
-.aside__title {
+    &__title {
     margin: 0 auto;
+    }
 }
 
-.list-wrapper {
+
+.aside__body {
     height: 520px;
     overflow: scroll;
 }
@@ -81,13 +55,6 @@ $font-family-primary: 'Helvetica Neue', sans-serif;
    width: 70%;
 }
 
-.chat__header {
-    @extend %display-space-around;
-    padding:   25px 0;
-    background-color: $grey-primary;
-    color: $text-color-header;
-}
-
 .chat {
     @extend %display-space-between;
     flex-direction: column;
@@ -98,7 +65,12 @@ $font-family-primary: 'Helvetica Neue', sans-serif;
     font-family: $font-family-primary;
     font-style: italic;
 }
-
+.chat__header {
+    @extend %display-space-around;
+    padding:   25px 0;
+    background-color: $grey-primary;
+    color: $text-color-header;
+}
 .chat-content {
     @extend %display-space-between;
     flex-direction: column;
@@ -191,7 +163,7 @@ $font-family-primary: 'Helvetica Neue', sans-serif;
         font-size: 14px;   
     }
 
-    .list-wrapper {
+    .aside__body {
         height: 644px;
         
     }
@@ -271,7 +243,7 @@ $font-family-primary: 'Helvetica Neue', sans-serif;
         font-size: 18px;   
     }
 
-    .list-wrapper {
+    .aside__body {
         max-height: 600px;
         
     }
@@ -298,7 +270,7 @@ $font-family-primary: 'Helvetica Neue', sans-serif;
     }
 
     .chat__header {
-        padding:  50px 0 50px 0;
+        padding:  50px 0;
     }
 
     .chat__header-icon {
@@ -369,7 +341,7 @@ $font-family-primary: 'Helvetica Neue', sans-serif;
         font-size: 26px;   
     }
 
-    .list-wrapper {
+    .aside__body {
         min-height: 800px;
         overflow: scroll;
     }
