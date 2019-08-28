@@ -12,47 +12,47 @@
     width: 250px;
 
     &__header {
-    height: 60px;
-    text-align: center;
-    padding-top: 40px;
-    color: $text-color-header;
-    font-size: 14px; 
+        height: 60px;
+        text-align: center;
+        padding-top: 40px;
+        color: $text-color-header;
+        font-size: 14px; 
     }
 
     &__title {
-    margin: 0 auto;
+        margin: 0 auto;
+        font-size: 24px;
+    }
+
+    &__body {
+        height: 520px;
+        overflow: scroll;
     }
 }
 
+.aside-list {
+    margin: 0;
+    padding:  0 20px;
+    list-style: none;
 
-.aside__body {
-    height: 520px;
-    overflow: scroll;
+    &__item { 
+        @extend %display-space-around;
+        height: 55px;
+        align-items: center;
+        margin-bottom: 50px;
+        background-color: $text-color-white;
 }
 
-.chats-list {
-   margin: 0;
-   padding:  0 20px;
-   list-style: none;
+    &__item-icon {
+        @extend %icon-style;
+        width: 50px;
+        height: 50px;
+        background-color: $bg-color-blue;
 }
 
- .chats-list__item { 
-    @extend %display-space-around;
-    height: 55px;
-    align-items: center;
-    margin-bottom: 50px;
-    background-color: $text-color-white;
-}
-
-.chats-list__item-icon {
-    @extend %icon-style;
-    width: 50px;
-    height: 50px;
-    background-color: $bg-color-blue;
-}
-
-.chats-list__item-title {
-   width: 70%;
+    &__item-title {
+        width: 70%;
+    }
 }
 
 .chat {
@@ -64,30 +64,34 @@
     background-color: $grey-secondary;
     font-family: $font-family-primary;
     font-style: italic;
-}
-.chat__header {
-    @extend %display-space-around;
-    padding:   25px 0;
-    background-color: $grey-primary;
-    color: $text-color-header;
-}
-.chat-content {
+
+    &__header {
+        @extend %display-space-around;
+        padding:   25px 0;
+        background-color: $grey-primary;
+        color: $text-color-header;
+    }
+    
+    &__header-title {
+        width: 400px;
+    }
+    
+    &__header-icon {
+        @extend %icon-style;
+        width: 60px;
+        height: 60px;
+        background-color: $bg-color-biege;
+    }
+
+    &__body {
     @extend %display-space-between;
     flex-direction: column;
     
-}
-.content-title {
-    width: 400px;
+   }
 }
 
-.chat__header-icon {
-    @extend %icon-style;
-    width: 60px;
-    height: 60px;
-    background-color: $bg-color-biege;
-}
 
-.chat-content-list {
+.chat-list {
     margin: 0;
     max-height: 415px;
     overflow: scroll;
@@ -95,7 +99,7 @@
     list-style: none;
 }
 
-.chat-content-list__item {
+.list__item {
     width: 265px;
     background-color: $text-color-white;
     border-radius: 0 15px 15px ; 
@@ -110,12 +114,12 @@
          }
 }
 
-.chat-content-list__item-text {
+.item-text {
     width: 280px;
     margin: 0 auto;
  }
  
- .chat-content-list__item-data {
+ .item-data {
     margin: 0;
     padding: 8px;
     width: 80%;
@@ -128,15 +132,14 @@
 .form {
     @extend %display-space-between;
     height: 55px;
-}
 
-.form__input {
-   @extend %button-style;
-   width: 79%;
-   font-style: italic;
-}
+    &__input {
+        @extend %button-style;
+        width: 79%;
+        font-style: italic;
+   }
 
-.form__button {
+    &__button {
     @extend %button-style;
     width: 25%;
     background-color: $grey-primary;
@@ -144,7 +147,8 @@
     font-weight: bold;
     text-transform: uppercase;
  }
- 
+}
+
  @media (min-width: 1024px) {
     .wrapper {
         width: 1024px;
@@ -153,37 +157,37 @@
 
     .aside {
         width: 300px;
-    }
 
-    .aside__header {
-        height: 98px;
-        text-align: center;
-        padding-top: 30px;
-        color: $text-color-header;
-        font-size: 14px;   
-    }
+        &__header {
+            height: 98px;
+            text-align: center;
+            padding-top: 30px;
+            color: $text-color-header;
+            font-size: 14px;   
+       }
 
-    .aside__body {
-        height: 644px;
-        
-    }
+        &__body {
+            height: 644px;  
+        }
+   }
+
     .chat {
         width: 724px;
         font-size: 17px;
         min-height: 768px;
-    }
 
-    .chat__header-icon {
-        width: 80px;
-        height: 80px;  
-    }
-    
-    .chat-content-list {
+        &__header-icon {
+            width: 80px;
+            height: 80px;  
+        }
+   }
+
+    .chat-list {
         padding: 5px;   
         max-height: 644px;
     }
 
-    .chat-content-list__item {
+    .list__item {
         width: 420px;
 
         &:before {
@@ -217,6 +221,7 @@
         min-height: 65px;
         font-size: 16px;
     }
+
     .form__input, .form__button {
         font-size: 16px;
     }
@@ -233,27 +238,27 @@
         max-width: 400px;
         width: 100%;
         min-height: 100%;
-    }
 
-    .aside__header {
-        min-height: 150px;
-        text-align: center;
-        padding-top: 50px;
-        color: $text-color-header;
-        font-size: 18px;   
-    }
+        &__header {
+            min-height: 150px;
+            text-align: center;
+            padding-top: 50px;
+            color: $text-color-header;
+            font-size: 18px;   
+        }
 
-    .aside__body {
-        max-height: 600px;
-        
-    }
-    .chats-list__item { 
+        &__body {
+            max-height: 600px;
+        }
+    }   
+
+    .aside-list__item { 
         height: 70px;
         margin-bottom: 50px;
         font-size: 22px;
     }
 
-    .chats-list__item-icon {
+    .aside-list__item-icon {
         width: 65px;
         height: 65px;
     }
@@ -263,29 +268,29 @@
         width: 100%;
         min-height: 800px;
         font-size: 20px;
+
+        &__body {
+            height: 560px;
+       }
+
+        &__header {
+            padding:  50px 0;
+        }
+
+        &__header-icon {
+            width: 100px;
+            height: 100px;
+        }
     }
 
-    .chat-content {
-        height: 560px;
-    }
-
-    .chat__header {
-        padding:  50px 0;
-    }
-
-    .chat__header-icon {
-        width: 100px;
-        height: 100px;
-    }
-
-    .chat-content-list {
+    .chat-list {
         max-height: 478px;
         overflow: scroll;
         padding: 0 5px;
         margin: 0;
     }
 
-    .chat-content-list__item {
+    .list__item{
         width: 450px; 
         min-height: 65px;
        
@@ -331,35 +336,35 @@
     .aside {
         max-width: 560px;
         width: 100%;
+
+        &__header {
+            min-height: 150px;
+            padding-top: 100px;
+            text-align: center;
+            color: $text-color-header;
+            font-size: 26px;   
+        }
+
+        &__body {
+            min-height: 800px;
+            overflow: scroll;
+        }
     }
 
-    .aside__header {
-        min-height: 150px;
-        padding-top: 100px;
-        text-align: center;
-        color: $text-color-header;
-        font-size: 26px;   
-    }
-
-    .aside__body {
-        min-height: 800px;
-        overflow: scroll;
-    }
-
-    .chats-list {
+    .aside-list {
         margin: 0;
         padding:  10px 10px;
-     }
+    
+        &__item { 
+            height: 85px;
+            margin-bottom: 75px;
+            font-size: 28px;
+       }
 
-    .chats-list__item { 
-        height: 85px;
-        margin-bottom: 75px;
-        font-size: 28px;
-    }
-
-    .chats-list__item-icon {
-        width: 65px;
-        height: 65px;
+        &__item-icon {
+            width: 65px;
+            height: 65px;
+        }
     }
 
     .chat {
@@ -367,30 +372,31 @@
         width: 100%;
         min-height: 1050px;
         font-size: 26px;
-    }
 
-    .chat-content {
-        min-height: 815px;
-        height: 100%;
-    }
+        &__body {
+            min-height: 815px;
+            height: 100%;
+        }
 
-    .chat__header {
-        padding:  65px 0;
-    }
+        &__header {
+            padding:  65px 0;
+        }
 
-    .chat__header-icon {
-        width: 110px;
-        height: 110px;
+        &__header-icon {
+            width: 110px;
+            height: 110px;
+        }
     }
-
-    .chat-content-list {
+    
+    .chat-list {
+        list-style: none;
         max-height: 690px;
         padding: 10px;
         margin: 0; 
         overflow: scroll;
     }
 
-    .chat-content-list__item {
+    .list__item {
         max-width: 480px; 
         width: 100%;
         padding-top: 10px;
