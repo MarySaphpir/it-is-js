@@ -22,6 +22,7 @@ function initGame(event) {
     resetGame();
     createTable();
     createInputForm();
+    console.log(dataCartoon);
     let imgBlock = document.querySelector(".img-block");
     imgBlock.style.background = `url(source/${dataCartoon[0].src})`;
     document.querySelector(".start-button").disabled = true;
@@ -56,7 +57,7 @@ function createTable() {
         tablearea.appendChild(table);
 
         let td = document.querySelectorAll("td");
-        td.forEach(elem => {
+        td.forEach((elem, index) => {
             elem.width = "72";
             elem.height = "72";
             })
