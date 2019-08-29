@@ -22,7 +22,7 @@ function searchUser(event) {
     event.preventDefault();
     const name = document.querySelector("input[name=name]");
     const surname = document.querySelector("input[name=surname]");
-    let resultField = document.querySelector(".output");
+    let resultField = document.querySelector(".output-text");
     if(!checkLetter(name.value) && !checkLetter(surname.value)) {
         resultField.innerText = "You must use latin characters";
         resetInput(name, surname);
@@ -31,8 +31,8 @@ function searchUser(event) {
    const arrayNames = checkName(name.value, usersData);
    const arraySurnames = checkSurname(surname.value, usersData);
    const findedUser = findEqualData(arrayNames, arraySurnames);
-   findedUser.length !== 0 ? createOutput(findedUser) : 
-   resultField.innerText = "Don't found any person";
+   findedUser.length !== 0 ? createOutput(findedUser[0]) : 
+   resultField.innerText = "Sorry, don't found any person :(";
    resetInput(name, surname);
 }
 
@@ -78,10 +78,9 @@ function findEqualData(array, data) {
     return array.filter(elem => data.find(el => elem.name === el.name && elem.surname === el.surname));
 }
 
-function createOutput(array) {
-    const output = document.querySelector(".output");
-    const markup = array.reduce(
-    (string, { name, surname, age }) => string + `<li>${name} ${surname} ${age}</li>`, "");
+function createOutput({name, surname, age}) {
+    const output = document.querySelector(".output-text");
+    const markup =`<p>Name: ${name}, Surname: ${surname}, Was born: ${age}</p>`;
     output.innerHTML = markup;
 }
 

@@ -7,20 +7,17 @@ function createTable(event) {
 
     const number = document.querySelector('input[name=number]');
     const color = document.querySelector('input[name=color]');
-
-    const tablearea = document.getElementById('tablearea'),
-    table = document.createElement('table');
+    const tablearea = document.querySelector('.tablearea');
+    const table = document.createElement('table');
     for (let i = 0; i < number.value; i++) {
-        let tr = document.createElement('tr');
-    
-        tr.appendChild( document.createElement('td') );
-        tr.appendChild( document.createElement('td') );
-        tr.appendChild( document.createElement('td') );
-
+        const tr = document.createElement('tr');
+        for (let j = 0; j < 3; j++) {
+            let td = document.createElement('td');
+            tr.append(td);
+        }
         table.appendChild(tr);
         table.setAttribute("border", "1");
     }
-
     tablearea.appendChild(table);
     const td = document.querySelectorAll("td");
     drawCells(number.value, color.value, [...td]);
@@ -29,16 +26,16 @@ function createTable(event) {
 function drawCells(number, color, array) {
     if (number % 2 === 0) {
         array.forEach((elem, index) => {
-            elem.width = "20";
-            elem.height = "20";
+            elem.width = "60";
+            elem.height = "60";
             if((index) % 3 === 0) {
                 elem.style.background = color;
             }
         })
     }else {
         array.forEach((elem, index) => {
-            elem.width = "20";
-            elem.height = "20";
+            elem.width = "60";
+            elem.height = "60";
             if((index) % 2 === 0) {
                 elem.style.background = color;
             }

@@ -1,27 +1,80 @@
-.img-block {
-    display: block;
-    width: 300px;
-    height: 300px;
-    position: relative;
-    background-repeat: no-repeat;
-    background-size: contain;
-  }
+.wrapper {
+    text-align: center;
+    color: rgba(0,0,0,.6);
+    font-family: 'Roboto', sans-serif;
+}
+.title {
+    text-align: center;
+}
 
-  #tablearea {
-      position: absolute;
-      z-index: 999;
-  }
+.img-block {
+    width: 400px;
+    height: 400px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.tablearea {
+    position: absolute;
+    z-index: 999;
+}
+
 table {
     margin: 0;
     border-spacing: 1px;
 }
+
 td {
-    background-color: green;
+    background-color: rgb(0, 128, 0);
     opacity: 1;
 }
+
 .message {
     font-size: 20px;
 }
+
 .form {
    display: flex;
+   justify-content: space-between;
+   width: 400px;
+   margin: 20px auto;
 }
+
+.input {
+    width: 75%;
+    border: 1px solid  rgba(0,0,0,.6);;
+    border-radius: 2px;
+    line-height: 40px;
+    font-style: italic;
+    font-style: 18px;
+    box-shadow: 0 0 0 1px rgba(14, 160, 104, 0.2), 0 5px 5px rgba(4, 39, 36, 0.2), inset 0 1px rgba(255, 255, 255, 0.7);
+}
+
+.button { 
+    width: 150px;
+    text-align: center;
+    background: rgb(7, 236, 187);
+    border: none;
+    border-radius: 10px;
+    text-transform: uppercase;
+    line-height: 40px;
+    font-size: 16px;
+    color: rgba(0,0,0,.6);
+    box-shadow: 0 0 0 1px rgba(14, 160, 104, 0.2), 0 5px 5px rgba(4, 39, 36, 0.2), inset 0 1px rgba(255, 255, 255, 0.7);
+}
+
+.button:hover {
+    background: rgb(14, 240, 44);
+}
+
+.submitBtn {
+    width: 20%;
+    line-height: 40px;
+    border-radius: 2px;
+}
+
+.startBtn {
+    margin: 30px auto;
+}
+
+    
