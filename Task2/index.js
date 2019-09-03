@@ -1,18 +1,22 @@
-let submitButton = document.querySelector(".submit");
+const submitButton = document.querySelector(".submit");
 submitButton.addEventListener("click", createTable);
-
+const numberCells = 3;
+const cellSize = {
+    width: "60",
+    height: "60"
+};
 
 function createTable(event) {
     event.preventDefault();
-
-    const number = document.querySelector('input[name=number]');
-    const color = document.querySelector('input[name=color]');
+    const number = document.querySelector('.input-number');
+    const color = document.querySelector('.input-color');
     const tablearea = document.querySelector('.tablearea');
     const table = document.createElement('table');
+
     for (let i = 0; i < number.value; i++) {
         const tr = document.createElement('tr');
-        for (let j = 0; j < 3; j++) {
-            let td = document.createElement('td');
+        for (let j = 0; j < numberCells; j++) {
+            const td = document.createElement('td');
             tr.append(td);
         }
         table.appendChild(tr);
@@ -23,22 +27,18 @@ function createTable(event) {
     drawCells(number.value, color.value, [...td]);
 }
 
-function drawCells(number, color, array) {
-    if (number % 2 === 0) {
-        array.forEach((elem, index) => {
-            elem.width = "60";
-            elem.height = "60";
+function drawCells(inputNumber, inputColor, cells) {
+    cells.forEach((cell, index) => {
+        cell.width = cellSize.width;
+        cell.height = cellSize.height;
+        if (inputNumber % 2 === 0) {
             if((index) % 3 === 0) {
-                elem.style.background = color;
-            }
-        })
-    }else {
-        array.forEach((elem, index) => {
-            elem.width = "60";
-            elem.height = "60";
+                cell.style.background = inputColor;
+             }
+        } else {
             if((index) % 2 === 0) {
-                elem.style.background = color;
+                cell.style.background = inputColor;
             }
-        })
-    }
+        }
+    })
 }

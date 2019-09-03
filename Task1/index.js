@@ -1,5 +1,4 @@
-
-let usersData = [
+const usersData = [
     {id: 1, name: "Freddie", surname: "Mercury", age: 1946},
     {id: 2, name: "Elton", surname: "John", age: 1947},
     {id: 3, name: "Lewis", surname: "Capaldi", age: 1996},
@@ -9,19 +8,20 @@ let usersData = [
     {id: 7, name: "Bob", surname: "Marley", age: 1965},
 ];
 
-const submitButton = document.querySelector("button");
+const submitButton = document.querySelector(".submit-btn");
 submitButton.addEventListener("click", searchUser);
+const numberLettersName = 3;
+const numberLetterSurname = 4;
 
-
-function checkLetter(str) {
+function checkLetter(string) {
     let regex = new RegExp("^[a-zA-Z]+$");  
-    return regex.test(str)
+    return regex.test(string)
 }
 
 function searchUser(event) {
     event.preventDefault();
-    const name = document.querySelector("input[name=name]");
-    const surname = document.querySelector("input[name=surname]");
+    const name = document.querySelector(".name");
+    const surname = document.querySelector(".surname");
     let resultField = document.querySelector(".output-text");
     if(!checkLetter(name.value) && !checkLetter(surname.value)) {
         resultField.innerText = "You must use latin characters";
@@ -31,47 +31,47 @@ function searchUser(event) {
    const arrayNames = checkName(name.value, usersData);
    const arraySurnames = checkSurname(surname.value, usersData);
    const findedUser = findEqualData(arrayNames, arraySurnames);
-   findedUser.length !== 0 ? createOutput(findedUser[0]) : 
-   resultField.innerText = "Sorry, don't found any person :(";
+   findedUser.length ? createOutput(findedUser[0]) 
+                     : resultField.innerText = "Sorry, don't found any person :(";
    resetInput(name, surname);
 }
 
-function checkName(string, data) {
-    let users = [];
-    let array = string.toLowerCase().split("");
+function checkName(name, users) {
+    const findedUsers = [];
+    const arrayFromName = name.toLowerCase().split("");
     let count = 0;
-    for (let i = 0; i < data.length; i++) {
+    for (let i = 0; i < users.length; i++) {
         count = 0;
-        for (let j = 0; j < array.length; j++) {
-            if (data[i].name.toLowerCase().includes(array[j])) {
-                count ++;
+        for (let j = 0; j < arrayFromName.length; j++) {
+            if (users[i].name.toLowerCase().includes(arrayFromName[j])) {
+                count++;
             }
-            if (count === 3) {
-                users.push(data[i]);  
+            if (count === numberLettersName) {
+                findedUsers.push(users[i]);  
             }  
         } 
     }    
 
-    return users;
+    return findedUsers;
 }
 
-function checkSurname(string, data) {
-    let users = [];
-    let array = string.toLowerCase().split("");
+function checkSurname(surname, users) {
+    const findedUsers = [];
+    const arrayFromSurname = surname.toLowerCase().split("");
     let count = 0;
-    for (let i = 0; i < data.length; i++) {
+    for (let i = 0; i < users.length; i++) {
         count = 0;
-        for (let j = 0; j < array.length; j++) {
-            if (data[i].surname.toLowerCase().includes(array[j])) {
-                count ++;
+        for (let j = 0; j < arrayFromSurname.length; j++) {
+            if (users[i].surname.toLowerCase().includes(arrayFromSurname[j])) {
+                count++;
             }
-            if (count === 4) {
-                users.push(data[i]);  
+            if (count === numberLetterSurname) {
+                findedUsers.push(users[i]);  
             }  
         } 
     }    
 
-    return users;
+    return findedUsers;
 }
 
 function findEqualData(array, data) {

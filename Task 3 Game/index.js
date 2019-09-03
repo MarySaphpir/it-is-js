@@ -1,4 +1,4 @@
-let data = [
+const data = [
     { name : "колобок", src: "kolobok.jpg" },
     { name : "красная шапочка", src: "red-hat.jpg" },
     { name : "рапунцель", src: "rapuncel.jpg" },
@@ -6,7 +6,7 @@ let data = [
     { name : "смешарики", src: "smeshariki.jpg" }
 ]
 
-let dataCartoon = [... data];
+const dataCartoon = [... data];
 
 const startBtn = document.querySelector(".startBtn");
 const table = document.querySelector(".tablearea");
@@ -14,18 +14,26 @@ const form = document.querySelector(".form");
 startBtn.addEventListener("click", initGame);
 table.addEventListener('click', showCell);
 form.addEventListener("click", checkInput);
+
 let countClick = 7;
 let currentName = "";
+const numberCells = 4;
+const numberRows = 4;
+
+const cellSets = {
+    width: "98",
+    height: "98",
+    opacity: "0.05"
+}
 
 function initGame(event) {
     event.preventDefault();
-    countClick = 7;
     resetGame();
     createTable();
     createInputForm();
-    const table = document.querySelector(".tablearea");
-    table.addEventListener('click', showCell);
+
     const imgBlock = document.querySelector(".img-block");
+    table.addEventListener('click', showCell);
     imgBlock.style.background = `url(source/${dataCartoon[0].src})`;
     imgBlock.style.backgroundSize = "cover";
     document.querySelector(".startBtn").disabled = true;
@@ -33,37 +41,27 @@ function initGame(event) {
 }
 
 function createInputForm() {
-
-    const div = document.querySelector(".form");
-    const input = document.createElement("input");
-    input.setAttribute("type", "text");
-    input.classList.add("input");
-    input.setAttribute("placeholder", "Enter there your answer...");
-    const button = document.createElement("button");
-    button.setAttribute("type", "submit");
-    button.classList.add("submitBtn");
-    button.classList.add("button");
-    button.innerText = "Send";
-    div.append(input, button);
+    const markup = `<input type="text" class="input" placeholder="Ваш ответ..."/>
+                    <button type="submit" class="submitBtn button">Отправить</button>`;
+    form.innerHTML = markup;
 }
 
 function createTable() {
-
     const tablearea = document.querySelector('.tablearea');
     const table = document.createElement('table');
-    for (let i = 0; i < 4; i++) {
-        let tr = document.createElement('tr');
-        for (let j = 0; j < 4; j++) {
+    
+    for (let i = 0; i < numberRows; i++) {
+        const tr = document.createElement('tr');
+        for (let j = 0; j < numberCells; j++) {
             let td = document.createElement('td');
             tr.append(td);
         }
         table.appendChild(tr);
         tablearea.appendChild(table);
-
-        let td = document.querySelectorAll("td");
-        td.forEach((elem, index) => {
-            elem.width = "98";
-            elem.height = "98";
+        const td = document.querySelectorAll("td");
+        td.forEach((elem) => {
+            elem.width = cellSets.width;
+            elem.height = cellSets.height;
             })
     }
 }
@@ -72,11 +70,11 @@ function showCell(event) {
     event.preventDefault();
     let output = document.querySelector(".message");
     if(event.target.nodeName === "TD" && countClick > 0) {
-        event.target.style.opacity = "0.05";
+        event.target.style.opacity = cellSets.opacity;
         countClick--;
-        output.innerText = `You have ${countClick} attempts`;
-    }else {
-        output.innerText = "Your attempts are finished. You have to guess the name of cartoon";
+        output.innerText = `У вас осталось ${countClick} попытки`                  
+    } else {
+        output.innerText = "Ваши попытки закончились. Напишите ваш ответ";
         event.stopPropagation();
     } 
 }
@@ -84,18 +82,19 @@ function showCell(event) {
 function checkInput(event) {
     event.preventDefault();
     if (event.target.nodeName !== "BUTTON") return;
-    let input = document.querySelector(".input");
+    const result = document.querySelector(".input");
     let output = document.querySelector(".message");
-    currentName.includes(input.value) ? output.innerText = `You guessed it`
-                                      : output.innerText = `You did not guess`;
+    currentName.includes(result.value) ? output.innerText = `Вы угадали`
+                                      : output.innerText = `Вы не угадали`;
     dataCartoon.shift();
-    let td = document.querySelectorAll("td");
+    const td = document.querySelectorAll("td");
     [...td].forEach(elem => elem.style.background = "none");
     document.querySelector(".startBtn").disabled = false;
-    input.value = " ";
+    input.value = "";
 }
 
-function resetGame(){
+function resetGame() {
+    countClick = 7;
     document.querySelector(".form").innerHTML = "";
     document.querySelector('.tablearea').innerHTML = "";
     document.querySelector(".img-block").style.background = "";
