@@ -1,0 +1,79 @@
+<div class="form-wrapper">
+    <h1 class="title">Registration Form</h1>
+    <p> All fields are required. </p>
+    <form [formGroup]="myForm" class="userForm" novalidate [matchValue]="['userPassword', 'confirmPassword']" 
+            (ngSubmit)="submit()" ng-class="{submitted:myForm.submitted}">
+        <div class="form-group">
+            <label>Name:</label>
+            <input class="form-control" name="name" formControlName="userName" />
+            
+            <div class="alert alert-danger"
+                *ngIf="myForm.controls['userName'].invalid && (myForm.controls['userName'].touched || myForm.controls['userName'].touched)">
+                no name specified
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Surname:</label>
+            <input class="form-control" name="name" formControlName="userSurname" />
+            
+            <div class="alert alert-danger"
+                *ngIf="myForm.controls['userSurname'].invalid && myForm.controls['userSurname'].touched">
+                no surname specified
+            </div>
+        </div>
+        <div class="form-group country-block ">
+            <label>Country:</label>
+            <div *ngIf="isShowImage" class="country-image"  [ngStyle]="{'background-image': 'url(' + '/assets/flags-images/' + countrySrc.src + ')'}"></div>
+            <input class="form-control" #countryName name="name" formControlName="userCountry"
+                   (blur)="onBlurCountryInput(countryName.value, $event)" [ngClass]="{redBorder: isRed }"/>
+            <div *ngIf="isShowText" class="country-text"> country does not match</div>      
+        </div>
+        <div class="form-group">
+            <label>Email:</label>
+            <input class="form-control" name="email" formControlName="userEmail" />
+            
+            <div class="alert alert-danger"
+                *ngIf="myForm.controls['userEmail'].invalid && myForm.controls['userEmail'].touched">
+                Invalid e-mail
+            </div>
+        </div>
+            <div class="form-group" >
+                <label>Phone:</label>
+                <input class="form-control" formControlName="userPhone" />
+            </div>
+            <div class="alert alert-danger"
+                *ngIf="myForm.controls['userPhone'].invalid && myForm.controls['userPhone'].touched">
+                Invalid phone number
+            </div>
+            <div class="form-group" >
+                <label>Password:</label>
+                <input class="form-control" type="password" s formControlName="userPassword" />
+            </div>
+            <div class="alert alert-danger"
+                *ngIf="myForm.controls['userPassword'].invalid && myForm.controls['userPassword'].touched ">
+                Password should be min 6 characters length
+            </div>
+            <div class="form-group" >
+                <label>Retype password:</label>
+                <input class="form-control" type="password" formControlName="confirmPassword" />
+            </div>
+            
+            <div class="alert alert-danger"
+                *ngIf="myForm.controls['confirmPassword'].invalid && myForm.controls['confirmPassword'].touched">
+                Passwords do not match
+            </div>
+            <div class="form-group checkbox" >
+                <label class="checkbox-label">I read the rules</label>
+                <div *ngIf="myForm.hasError('required', 'checkbox_agree')" class="checkbox-text">
+                    *Required
+                </div>
+                <input type="checkbox" formControlName="checkbox_agree">
+            </div>
+        <div class="form-group">
+            <button class="btn btn-sign" [disabled]="myForm.invalid">
+                Sign in
+            </button>
+        </div>
+    </form>
+</div>
+

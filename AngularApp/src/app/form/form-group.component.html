@@ -1,0 +1,21 @@
+
+<input type="text" [ngModel]="userName" (ngModelChange)="onNameChange($event)" />
+<div>
+    <button (click)="resetName()">Reset Name</button>
+</div>
+<div>
+    <button (click)="addName(userName)">Add</button>
+</div>
+<ul *ngFor="let name of names">
+    <li> 
+        {{name}}
+         <button *ngIf="condition" (click)="editItem(event)">Edit</button>
+        <input *ngIf="!condition"
+        [(ngModel)]="name" 
+        class="edit"
+        #updatedItem
+        [value]="updateItem"
+        (keyup.enter)="updateItem(updatedItem)">         
+    </li>
+        
+</ul>

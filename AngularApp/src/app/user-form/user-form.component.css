@@ -1,0 +1,89 @@
+.form-wrapper {
+    height: 100vh;
+    padding-top: 20px;
+    text-align: center;
+    background-color: rgb(4, 148, 105);
+    color: rgb(71, 70, 70);
+    font-size: 16px;
+    overflow: auto;  
+    font-family: sans-serif;
+}
+.title {
+    font-size: 25px;
+}
+.userForm {
+    width: 500px;
+    min-height: 400px;
+    margin: 0 auto;
+    padding-top: 30px;
+    box-shadow: 10px 30px 30px rgba(0,0,0,0.25), 0 10px 10px rgba(139, 16, 16, 0.22);
+    background-color: rgb(245, 245, 220);
+    color: rgb(95, 93, 93);
+    font-size: 15px;
+    font-weight: bold;
+}
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+label{
+    display: block;
+    text-align: left;
+    padding-left: 100px;
+}
+.checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.checkbox-label {
+    padding: 0;
+}
+.checkbox-text{
+    font-size: 10px;
+}
+.form-control {
+    display: inline-block;
+    width: 300px;
+    line-height: 25px;
+}
+.country-image {
+    width: 50px;
+    height: 25px;
+    position: absolute;
+    top: 18px;
+    left: 405px;
+    background: contain;
+    background-position: center;
+}
+.country-text {
+    color: rgb(216, 90, 90);
+}
+
+input.ng-touched.ng-invalid {
+    border: solid rgb(216, 90, 90) 2px;
+}
+
+input.ng-touched.ng-valid {
+    border:solid rgb(4, 148, 105) 2px;
+}
+
+input.ng-touched.redBorder {
+    border: solid rgb(216, 90, 90) 2px;
+}
+
+.alert {
+    color: rgb(216, 90, 90);
+}
+.btn-sign {
+    width: 150px;
+    margin-bottom: 20px;
+    line-height: 25px;
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    background-color: rgb(95, 93, 93);
+    border-radius: 5%;
+   
+}
