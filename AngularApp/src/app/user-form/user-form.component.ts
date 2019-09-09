@@ -35,26 +35,19 @@ export class UserFormComponent implements OnInit{
     ngOnInit(){  
         this.initForm();
         this.countries = this.dataService.getData();
-        console.log(this.countries);
     }
 
     onBlurCountryInput(value: string, event: any) {
         if (value){
             this.countrySrc = this.countries.find((country: any) => {
-                if(country.name === value) {
-                    return country.src;
-                }else {
-                    return undefined;
-                }
-            })
-            console.log(this.countrySrc)
+              return (country.name === value) ? country.src : undefined;
+        })
             if(this.countrySrc) {
                 this.isShowImage = true;
             }else {
                  this.isShowText = true;
                  this.isRed = true;
             }
-           
         } 
     }
 

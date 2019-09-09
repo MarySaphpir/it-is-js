@@ -57,7 +57,7 @@ label{
     background: contain;
     background-position: center;
 }
-.country-text {
+.country-text, .alert {
     color: rgb(216, 90, 90);
 }
 
@@ -73,9 +73,6 @@ input.ng-touched.redBorder {
     border: solid rgb(216, 90, 90) 2px;
 }
 
-.alert {
-    color: rgb(216, 90, 90);
-}
 .btn-sign {
     width: 150px;
     margin-bottom: 20px;
@@ -83,7 +80,10 @@ input.ng-touched.redBorder {
     border: none;
     color: white;
     text-transform: uppercase;
-    background-color: rgb(95, 93, 93);
+    background-color: rgb(4, 148, 105);
     border-radius: 5%;
-   
+}
+
+button[disabled] {
+    background:  rgb(95, 93, 93);
 }
