@@ -1,0 +1,6 @@
+<p>{{ numberValue }}</p>
+<div class="image-block ">
+    <div *ngIf="isShowImage" class="country-name">Country: {{ country.text }} </div>
+    <div *ngIf="isShowImage" class="country-image"  [ngStyle]="{'background-image': 'url(' + '/assets/flags-images/' + country.src + ')'}"></div>
+    <div *ngIf="isShowText" class="country-text"> country does not match</div>      
+</div>

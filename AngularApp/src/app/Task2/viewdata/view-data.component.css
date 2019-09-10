@@ -1,0 +1,6 @@
+.country-image {
+    width: 100px;
+    height: 100px;
+    background: contain;
+    background-position: center;
+}
