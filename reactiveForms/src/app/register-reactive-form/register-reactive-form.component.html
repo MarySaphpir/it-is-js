@@ -1,0 +1,72 @@
+<div class="form-block">
+        <h1 class="head-title">Registration</h1>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form-register">
+        <div class="form-input">
+            <label>First Name</label>
+            <input type="text" class="form-input_name" formControlName='firstName'>
+            <div class="error-massege"
+                *ngIf="myFormControls['firstName'].touched && myFormControls['firstName'].invalid">
+                The Name you entered is incorrect!
+            </div>
+        </div>
+        <div class="form-input">
+            <label>Last Name</label>
+            <input type="text" class="form-input_name" formControlName='lastName'>
+            <div class="error-massege"
+                *ngIf="myFormControls['lastName'].touched && myFormControls['lastName'].invalid">
+                The Last Name you entered is incorrect!
+            </div>
+        </div>
+        <div class="form-input">
+            <label>Country</label>
+            <input type="text" #countryTitle class="form-input_name" formControlName='country' 
+            (blur) = 'onShowFlag(countryTitle.value, $event)'>
+            <span class="flag-massege" *ngIf="flagMassege">No such country found!</span>
+            <span class="flag-image" *ngIf="flagImage"
+            [ngStyle]="{'background-image': 'url(' + flagSrc + ')'}"></span>
+            <div class="error-massege"
+                *ngIf="myFormControls['country'].touched && myFormControls['country'].invalid">
+                You have not entered a country name!
+            </div>
+        </div>
+        <div class="form-input">
+            <label>Email</label>
+            <input type="email" class="form-input_name" formControlName='email'>
+            <div class="error-massege"
+                *ngIf="myFormControls['email'].touched && myFormControls['email'].invalid">
+                Field is incorrect.
+            </div>
+        </div>
+        <div class="form-input">
+            <label>Phone</label>
+            <input type="tel" class="form-input_name" formControlName='phone'>
+            <div class="error-massege"
+                *ngIf="myFormControls['phone'].touched && myFormControls['phone'].invalid">
+                Phone number entered incorrectly!
+            </div>
+        </div>
+        <div class="form-input">
+            <label>Password</label>
+            <input type="password" class="form-input_name" formControlName='password'>
+            <div class="error-massege"
+                *ngIf="myFormControls['password'].touched && myFormControls['password'].invalid">
+                Password must be at least 6 characters long!
+            </div>
+        </div>
+        <div class="form-input">
+            <label>Confirm password</label>
+            <input type="password" class="form-input_name" formControlName='confirmPassword'>
+            <div class="error-massege"
+            *ngIf="myFormControls['confirmPassword'].touched && myFormControls['confirmPassword'].invalid">
+            Confirm your password!
+        </div>
+        </div>
+        <div class="form-input checkbox">
+            <label class="checkbox_label" for="check">I agree with the terms and conditions!</label>
+            <input type="checkbox" id="check" formControlName='acceptRules'>
+        </div>
+        <div class="form-input">
+            <button class="button-register" [disabled] = 'registerForm.invalid'>Register</button>
+        </div>
+    </form>
+</div>
