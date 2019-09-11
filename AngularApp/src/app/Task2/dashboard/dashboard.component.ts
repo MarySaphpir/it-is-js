@@ -6,8 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashBoardComponent {
-  count:number = 0;
-  onChanged(increased:any){
-      increased==true?this.count++:this.count--;
+  count = 0;
+  onChanged(value:boolean){
+      value === true ? this.count++ : this.count--;
   }
 }

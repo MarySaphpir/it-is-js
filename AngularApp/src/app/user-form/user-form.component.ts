@@ -1,58 +1,62 @@
 import { Component,  OnInit} from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
-import { DataService } from './flags-data.service';
-import { phoneNumberValidator } from './directive/phone-value.validators';
+import { UserFormValidators } from './form-validators/user-form.validator';
+import { countriesData } from './countries-data';
   
 @Component({
     selector: 'user-form',
     templateUrl: './user-from.component.html',
     styleUrls: ['./user-form.component.css'],
-    providers: [DataService]
 })
 export class UserFormComponent implements OnInit{ 
-    countries: object[] = [];
-    myForm : FormGroup;
+    countries: any[] = [];
+    userForm : FormGroup;
     countrySrc: any;
-    isRed: boolean= false;
-    isShowImage: boolean=false;
-    isShowText: boolean=false;
-    constructor(private formBuilder: FormBuilder, private dataService: DataService){}
+    isInvalidField = false;
+    isShowImage = false;
+    isShowText = false;
+    constructor(private formBuilder: FormBuilder){}
      
     initForm() {
-       this.myForm = this.formBuilder.group({
+       this.userForm = this.formBuilder.group({
 
-            "userName": ["", [Validators.required]],
-            "userSurname": ["", [Validators.required]],
-            "userCountry": ["", [Validators.required]],
-            "userEmail": ["", [Validators.required, Validators.email]],
-            "userPhone": ["", [Validators.required, phoneNumberValidator]],
-            "userPassword": ["", [Validators.required, Validators.minLength(6)]],
+            "name": ["", [Validators.required]],
+            "surname": ["", [Validators.required]],
+            "country": ["", [Validators.required]],
+            "email": ["", [Validators.required, Validators.email]],
+            "phone": ["", [Validators.required, UserFormValidators.phoneNumberValidator]],
+            "password": ["", [Validators.required, Validators.minLength(6)]],
             "confirmPassword": ["", [Validators.required, Validators.minLength(6)] ],
             "checkbox_agree": [false, Validators.requiredTrue]
-        });
+        },  {validator: UserFormValidators.matchPasswordsValidator });
     }
 
-    ngOnInit(){  
+    ngOnInit() {  
         this.initForm();
-        this.countries = this.dataService.getData();
+        this.countries = countriesData;
     }
 
     onBlurCountryInput(value: string, event: any) {
-        if (value){
+        if (value) {
             this.countrySrc = this.countries.find((country: any) => {
-              return (country.name === value) ? country.src : undefined;
+              return (country.name === value) ? country.src : null;
         })
             if(this.countrySrc) {
                 this.isShowImage = true;
-            }else {
-                 this.isShowText = true;
-                 this.isRed = true;
+                this.isShowText = false;
+                this.isInvalidField = false;
+            } else {
+               this.isShowText = true;
+               this.isInvalidField = true;
             }
         } 
     }
 
-    submit(){
-        console.log(this.myForm);
+    displayErrorFor(field: string) {
+        return (this.userForm.get(field).invalid && (this.userForm.get(field).touched || this.userForm.get(field).dirty) );  
     }
 
+    submit() {
+        console.log(this.userForm);
+    }
 };

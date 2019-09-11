@@ -8,9 +8,9 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
     count = 0;
     @Output() onChanged  = new EventEmitter();
     
-    change(increased:any) {
-        this.onChanged.emit(increased);
-        increased==true?this.count++:this.count--;
+    change(value = false) {
+        this.onChanged.emit(value);
+        value ? this.count++ : this.count--;
     }
 
 }

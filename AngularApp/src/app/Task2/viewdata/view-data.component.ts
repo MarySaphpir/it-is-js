@@ -1,47 +1,36 @@
 import { Component, Input, SimpleChanges } from '@angular/core';
-import { DataService } from '../../servises/data.servise';
+import { countriesData } from '../sourse/countries-data';
 
 @Component({
     selector: 'view-data',
     templateUrl: './view-data.component.html',
-    providers: [DataService]
   })
   export class ViewDataComponent {
     count:any;
-    countries:object[]=[];
+    countries:any[]=[];
     country:object;
-    isShowImage = false;
-    isShowText = false;
+    isShowCountry = false;
 
-    constructor(private dataService: DataService){}
+    constructor() {}
 
     @Input()
     get numberValue() {
         return this.count;
     }
     
-    set numberValue(val) {
-        this.count = val;
+    set numberValue(inputValue) {
+        this.count = inputValue;
     }
-    ngOnInit(){  
-        this.countries = this.dataService.getData();
+    ngOnInit() {  
+        this.countries = countriesData;
     }
     
     ngOnChanges() {
         this.onCountryIdSearch(this.count);
-            if (!this.country) {
-                this.isShowText = true;
-                this.isShowImage = false;
-            } else {
-                this.isShowText = false;
-        }
+        this.country ? this.isShowCountry = true :  this.isShowCountry = false;
     }
 
-    onCountryIdSearch(id: any) {
-        this.country = this.countries.find((country: any) => country.id == id);
-            if(this.country) {
-                this.isShowImage = true;
-        } 
-    }
-    
+    onCountryIdSearch(id: number) {
+        this.country = this.countries.find((country: any) => country.id === id);
+    }  
 }
