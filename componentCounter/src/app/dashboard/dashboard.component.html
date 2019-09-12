@@ -1,0 +1,5 @@
+<div>
+    <h1>Count = {{ count }} </h1>
+    <app-counter (counterChange)="counterChange($event)"></app-counter>
+    <app-show-element [counterNum]="count"></app-show-element>
+</div>
