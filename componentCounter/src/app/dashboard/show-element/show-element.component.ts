@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {dataNumbers} from 'src/app/data-numbers';
+import {DATA_NUMBERS} from 'src/app/data-numbers.const';
 
 @Component({
     selector: 'app-show-element',
@@ -7,18 +7,17 @@ import {dataNumbers} from 'src/app/data-numbers';
     styleUrls: ['./show-element.component.css']
 })
 export class ShowElementComponent {
-
-    count: any;
-    selectNumber: object;
-    numbers = dataNumbers;
+    count: number;
+    selectNumber: any;
+    numbers = DATA_NUMBERS;
     showNumber: boolean;
 
-    counterNum(val: number) {
-        this.count = val;
+    counterNum(indicator: number) {
+        this.count = indicator;
         this.findNumOfNumbers();
     }
 
     findNumOfNumbers() {
-        this.selectNumber = this.numbers.find((numerics) => numerics.id === this.count);
+        this.selectNumber = this.numbers.find(({id, num}) => id === this.count);
     }
 }

@@ -1,4 +1,6 @@
-export const dataNumbers: any = [
+import { Numbers } from 'src/app/numbers.module';
+
+export const DATA_NUMBERS: Numbers[] = [
     {id: 0, num: 'Zero'},
     {id: 1, num: 'One'},
     {id: 2, num: 'Two'},
