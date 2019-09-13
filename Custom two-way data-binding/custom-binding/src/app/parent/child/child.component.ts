@@ -1,24 +1,22 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-// import { EventEmitter } from 'protractor';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'app-child',
     templateUrl: './child.component.html',
     styleUrls: ['./child.component.css']
 })
-export class ChildComponent implements OnInit {
+export class ChildComponent {
 
-    // tslint:disable-next-line:no-inferrable-types
-    count: number = 0;
+    @Input() get counter() {
+        return this.count;
+    }
 
     @Output() counterChange: EventEmitter<number>;
     constructor() {
         this.counterChange = new EventEmitter();
     }
 
-    @Input() get counter() {
-        return this.count;
-    }
+    count = 0;
 
     set counter(val) {
         this.count = val;
@@ -33,8 +31,4 @@ export class ChildComponent implements OnInit {
         this.count = this.count - 1;
         this.counterChange.emit(this.count);
     }
-
-    ngOnInit() {
-    }
-
 }
