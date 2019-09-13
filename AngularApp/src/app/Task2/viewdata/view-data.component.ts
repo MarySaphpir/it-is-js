@@ -1,13 +1,14 @@
 import { Component, Input, SimpleChanges } from '@angular/core';
 import { countriesData } from '../sourse/countries-data';
+import { Country } from '../models/country-model';
 
 @Component({
     selector: 'view-data',
     templateUrl: './view-data.component.html',
   })
   export class ViewDataComponent {
-    count:any;
-    countries:any[]=[];
+    count:number;
+    countries:Country[]=[];
     country:object;
     isShowCountry = false;
 
@@ -31,6 +32,8 @@ import { countriesData } from '../sourse/countries-data';
     }
 
     onCountryIdSearch(id: number) {
-        this.country = this.countries.find((country: any) => country.id === id);
+        this.country = this.countries.find((country: Country) => {
+            return country.id === id;
+        });
     }  
 }

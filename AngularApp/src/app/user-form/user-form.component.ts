@@ -2,6 +2,7 @@ import { Component,  OnInit} from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 import { UserFormValidators } from './form-validators/user-form.validator';
 import { countriesData } from './countries-data';
+import { Country } from './form-models/country-model';
   
 @Component({
     selector: 'user-form',
@@ -9,9 +10,10 @@ import { countriesData } from './countries-data';
     styleUrls: ['./user-form.component.css'],
 })
 export class UserFormComponent implements OnInit{ 
-    countries: any[] = [];
+    countries: Country[] = [];
     userForm : FormGroup;
-    countrySrc: any;
+    country: Country;
+    inputValue: string;
     isInvalidField = false;
     isShowImage = false;
     isShowText = false;
@@ -36,24 +38,23 @@ export class UserFormComponent implements OnInit{
         this.countries = countriesData;
     }
 
-    onBlurCountryInput(value: string, event: any) {
+    onBlurCountryInput(value: string) {
         if (value) {
-            this.countrySrc = this.countries.find((country: any) => {
-              return (country.name === value) ? country.src : null;
-        })
-            if(this.countrySrc) {
-                this.isShowImage = true;
-                this.isShowText = false;
-                this.isInvalidField = false;
-            } else {
-               this.isShowText = true;
-               this.isInvalidField = true;
-            }
-        } 
-    }
-
+            this.inputValue = value;
+            this.country = this.countries.find((country: Country) => {
+                return country.name === value;
+        })}
+        this.country? this.toggleErrorText(this.country, false) : this.toggleErrorText(this.country, true);
+    } 
+    
     displayErrorFor(field: string) {
         return (this.userForm.get(field).invalid && (this.userForm.get(field).touched || this.userForm.get(field).dirty) );  
+    }
+
+    toggleErrorText(value :Country, val:any) {
+       this.isShowImage = value ? true : false;
+       this.isShowText = val;
+       this.isInvalidField = val;
     }
 
     submit() {

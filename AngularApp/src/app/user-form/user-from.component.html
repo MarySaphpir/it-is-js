@@ -21,7 +21,7 @@
         </div>
         <div class="form-group country-block ">
             <label>Country:</label>
-            <div *ngIf="isShowImage" class="country-image"  [ngStyle]="{'background-image': 'url(' + '/assets/flags-images/' + countrySrc.src + ')'}"></div>
+            <div *ngIf="isShowImage" class="country-image"  [ngStyle]="{'background-image': 'url(' + '/assets/flags-images/' + country.src + ')'}"></div>
             <input class="form-control" #countryName name="country" formControlName="country"
                    (blur)="onBlurCountryInput(countryName.value, $event)" [ngClass]="{redBorder: isInvalidField }"/>
             <div *ngIf="isShowText" class="country-text"> country does not match</div>

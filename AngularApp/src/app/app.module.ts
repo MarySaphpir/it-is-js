@@ -7,6 +7,7 @@ import { UserFormComponent } from './user-form/user-form.component';
 import { DashBoardComponent } from './Task2/dashboard/dashboard.component';
 import { CounterComponent } from './Task2/counter/counter.component';
 import { ViewDataComponent } from './Task2/viewdata/view-data.component';
+import { TimerComponent } from './Task3/timer.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { ViewDataComponent } from './Task2/viewdata/view-data.component';
     CounterComponent,
     ViewDataComponent,
     UserFormComponent,
+    TimerComponent
   ],
   imports: [
     BrowserModule, ReactiveFormsModule, FormsModule
