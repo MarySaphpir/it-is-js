@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { ShowElementComponent } from './show-element/show-element.component';
 
 @Component({
      selector: 'app-dashboard',
@@ -6,8 +7,14 @@ import { Component, OnInit, ViewChild } from '@angular/core';
      styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
+
     count = 0;
-    counterChange(val: number) {
-        return this.count = val;
+
+    @ViewChild(ShowElementComponent)
+    showElem: ShowElementComponent;
+
+    onCounterChange(val: number) {
+        this.count = val;
+        this.showElem.counterNum(val);
     }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, SimpleChange, OnChanges } from '@angular/core';
+import { Component } from '@angular/core';
 import {dataNumbers} from 'src/app/data-numbers';
 
 @Component({
@@ -6,33 +6,19 @@ import {dataNumbers} from 'src/app/data-numbers';
     templateUrl: './show-element.component.html',
     styleUrls: ['./show-element.component.css']
 })
-export class ShowElementComponent implements OnInit, OnChanges {
+export class ShowElementComponent {
 
-    @Input() get counterNum() {
-        return this.count;
-    }
-
-    count: number;
+    count: any;
     selectNumber: object;
-    numbers = [];
+    numbers = dataNumbers;
     showNumber: boolean;
 
-    set counterNum(val: number) {
+    counterNum(val: number) {
         this.count = val;
+        this.findNumOfNumbers();
     }
 
-    findNumOfNumbers(id: number) {
-        this.selectNumber = this.numbers.find((numerics) => numerics.id === id);
-    }
-
-    ngOnInit() {
-        this.numbers = dataNumbers;
-    }
-
-    ngOnChanges() {
-        this.findNumOfNumbers(this.count);
-        this.selectNumber
-        ? this.showNumber = true
-        : this.showNumber = false;
+    findNumOfNumbers() {
+        this.selectNumber = this.numbers.find((numerics) => numerics.id === this.count);
     }
 }
