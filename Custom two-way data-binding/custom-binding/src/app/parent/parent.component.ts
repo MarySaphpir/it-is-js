@@ -6,6 +6,5 @@ import { Component } from '@angular/core';
     styleUrls: ['./parent.component.css']
 })
 export class ParentComponent {
-
-    num = 10;
+    metric = 10;
 }

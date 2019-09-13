@@ -6,7 +6,6 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
     styleUrls: ['./child.component.css']
 })
 export class ChildComponent {
-
     @Input() get counter() {
         return this.count;
     }
@@ -18,17 +17,17 @@ export class ChildComponent {
 
     count = 0;
 
-    set counter(val) {
-        this.count = val;
+    set counter(indicator) {
+        this.count = indicator;
     }
 
     increment() {
-        this.count = this.count + 1;
+        this.count = ++this.count;
         this.counterChange.emit(this.count);
     }
 
     decrement() {
-        this.count = this.count - 1;
+        this.count = --this.count;
         this.counterChange.emit(this.count);
     }
 }
