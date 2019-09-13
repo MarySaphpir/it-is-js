@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CheckPasswords } from 'src/app/register-reactive-form/utility-validation-confirmPassword';
-import { countriesAndFlag } from 'src/app/register-reactive-form/utility-contry-flag';
+import { CheckPasswords } from 'src/app/register-reactive-form/password.validator';
+import { COUNTRIES } from 'src/app/register-reactive-form/contries.constant';
 
 @Component({
     selector: 'app-register-reactive-form',
@@ -10,12 +10,16 @@ import { countriesAndFlag } from 'src/app/register-reactive-form/utility-contry-
 })
 export class RegisterReactiveFormComponent implements OnInit {
     registerForm: FormGroup;
-    countries = countriesAndFlag;
+    countries = COUNTRIES;
     submitted = false;
     ErrorMassege = false;
     flagImage = false;
     objectCountry: any;
     flagSrc: string;
+
+    get myFormControls() {
+        return this.registerForm.controls;
+    }
 
     constructor(private formBuilder: FormBuilder) { }
 
@@ -29,22 +33,11 @@ export class RegisterReactiveFormComponent implements OnInit {
             password: ['', [Validators.required, Validators.minLength(6)]],
             confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
             acceptRules: [false, Validators.requiredTrue]
-        }, { validator: CheckPasswords });
+        }, { validator: CheckPasswords.checkPassword });
     }
 
     validationMassege(fControlName: string) {
         return this.myFormControls[fControlName].touched && this.myFormControls[fControlName].invalid;
-    }
-
-    get myFormControls() {
-        return this.registerForm.controls;
-    }
-
-    onSubmit() {
-        this.submitted = true;
-        if (this.registerForm.invalid) {
-            return false;
-        }
     }
 
     onShowFlag(value: string, event: any) {
@@ -60,6 +53,13 @@ export class RegisterReactiveFormComponent implements OnInit {
             } else {
                 this.ErrorMassege = true;
             }
+        }
+    }
+
+    onSubmit() {
+        this.submitted = true;
+        if (this.registerForm.invalid) {
+            return false;
         }
     }
 }

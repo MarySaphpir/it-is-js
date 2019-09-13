@@ -1,6 +1,6 @@
-import { CountryFlag } from 'src/app/register-reactive-form/countryFlag-model';
+import { CountryFlag } from 'src/app/register-reactive-form/country-flag.model';
 
-export const countriesAndFlag: CountryFlag[] = [
+export const COUNTRIES: CountryFlag[] = [
         { title: 'Ukraine', src: '/assets/ua-flag.png' },
         { title: 'Croatia', src: '/assets/croatia-flag.png' },
         { title: 'Egypt', src: '/assets/egypt-flag.png' },
