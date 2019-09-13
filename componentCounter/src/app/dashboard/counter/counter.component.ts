@@ -6,7 +6,6 @@ import { Component, Output, EventEmitter} from '@angular/core';
     styleUrls: ['./counter.component.css']
 })
 export class CounterComponent {
-
     @Output() counterChange: EventEmitter<number>;
     public count = 0;
 
@@ -15,12 +14,12 @@ export class CounterComponent {
     }
 
     increment() {
-        this.count += 1;
+        this.count++;
         this.counterChange.emit(this.count);
     }
 
     decrement() {
-        this.count -= 1;
+        this.count--;
         this.counterChange.emit(this.count);
     }
 }

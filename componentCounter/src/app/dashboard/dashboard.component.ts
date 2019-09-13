@@ -7,14 +7,13 @@ import { ShowElementComponent } from './show-element/show-element.component';
      styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
-
     count = 0;
 
     @ViewChild(ShowElementComponent)
     showElem: ShowElementComponent;
 
-    onCounterChange(val: number) {
-        this.count = val;
-        this.showElem.counterNum(val);
+    onCounterChange(indicator: number) {
+        this.count = indicator;
+        this.showElem.counterNum(indicator);
     }
 }
