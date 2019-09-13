@@ -5,7 +5,7 @@
             <label>First Name</label>
             <input type="text" class="form-input_name" formControlName='firstName'>
             <div class="error-massege"
-                *ngIf="myFormControls['firstName'].touched && myFormControls['firstName'].invalid">
+                *ngIf="validationMassege('firstName')">
                 The Name you entered is incorrect!
             </div>
         </div>
@@ -13,19 +13,19 @@
             <label>Last Name</label>
             <input type="text" class="form-input_name" formControlName='lastName'>
             <div class="error-massege"
-                *ngIf="myFormControls['lastName'].touched && myFormControls['lastName'].invalid">
+                *ngIf="validationMassege('lastName')">
                 The Last Name you entered is incorrect!
             </div>
         </div>
         <div class="form-input">
             <label>Country</label>
-            <input type="text" #countryTitle class="form-input_name" formControlName='country' 
-            (blur) = 'onShowFlag(countryTitle.value, $event)'>
-            <span class="flag-massege" *ngIf="flagMassege">No such country found!</span>
             <span class="flag-image" *ngIf="flagImage"
             [ngStyle]="{'background-image': 'url(' + flagSrc + ')'}"></span>
+            <input type="text" #countryTitle class="form-input_name" formControlName='country' 
+            (blur) = 'onShowFlag(countryTitle.value, $event)'>
+            <span class="notflag-massege" *ngIf="ErrorMassege">No such country found!</span>
             <div class="error-massege"
-                *ngIf="myFormControls['country'].touched && myFormControls['country'].invalid">
+                *ngIf="validationMassege('country')">
                 You have not entered a country name!
             </div>
         </div>
@@ -33,15 +33,15 @@
             <label>Email</label>
             <input type="email" class="form-input_name" formControlName='email'>
             <div class="error-massege"
-                *ngIf="myFormControls['email'].touched && myFormControls['email'].invalid">
-                Field is incorrect.
+                *ngIf="validationMassege('email')">
+                Email is incorrect. You must have @.
             </div>
         </div>
         <div class="form-input">
             <label>Phone</label>
             <input type="tel" class="form-input_name" formControlName='phone'>
             <div class="error-massege"
-                *ngIf="myFormControls['phone'].touched && myFormControls['phone'].invalid">
+                *ngIf="validationMassege('phone')">
                 Phone number entered incorrectly!
             </div>
         </div>
@@ -49,7 +49,7 @@
             <label>Password</label>
             <input type="password" class="form-input_name" formControlName='password'>
             <div class="error-massege"
-                *ngIf="myFormControls['password'].touched && myFormControls['password'].invalid">
+                *ngIf="validationMassege('password')">
                 Password must be at least 6 characters long!
             </div>
         </div>
@@ -57,7 +57,7 @@
             <label>Confirm password</label>
             <input type="password" class="form-input_name" formControlName='confirmPassword'>
             <div class="error-massege"
-            *ngIf="myFormControls['confirmPassword'].touched && myFormControls['confirmPassword'].invalid">
+            *ngIf="validationMassege('confirmPassword')">
             Confirm your password!
         </div>
         </div>
@@ -66,7 +66,7 @@
             <input type="checkbox" id="check" formControlName='acceptRules'>
         </div>
         <div class="form-input">
-            <button class="button-register" [disabled] = 'registerForm.invalid'>Register</button>
+            <button class="button-register" [disabled]="registerForm.invalid">Register</button>
         </div>
     </form>
 </div>

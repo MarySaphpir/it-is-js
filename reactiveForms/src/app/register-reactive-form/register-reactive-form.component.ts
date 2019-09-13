@@ -10,9 +10,9 @@ import { CountriesFlag } from 'src/app/register-reactive-form/utility-contry-fla
 })
 export class RegisterReactiveFormComponent implements OnInit {
     registerForm: FormGroup;
-    submitted = false;
     countries = new CountriesFlag();
-    flagMassege = false;
+    submitted = false;
+    ErrorMassege = false;
     flagImage = false;
     objectCountry: any;
     flagSrc: string;
@@ -32,6 +32,10 @@ export class RegisterReactiveFormComponent implements OnInit {
         }, { validator: CheckPasswords });
     }
 
+    validationMassege(fControlName: string) {
+        return this.myFormControls[fControlName].touched && this.myFormControls[fControlName].invalid;
+    }
+
     get myFormControls() {
         return this.registerForm.controls;
     }
@@ -41,7 +45,6 @@ export class RegisterReactiveFormComponent implements OnInit {
         if (this.registerForm.invalid) {
             return false;
         }
-        console.log(this.registerForm.value);
     }
 
     onShowFlag(value: string, event: any) {
@@ -51,9 +54,12 @@ export class RegisterReactiveFormComponent implements OnInit {
             this.flagSrc = flag
             ? flag.src
             : '';
-            this.flagSrc
-            ? this.flagImage = true
-            : this.flagMassege = true;
+            if (this.flagSrc) {
+                this.flagImage = true;
+                this.ErrorMassege = false;
+            } else {
+                this.ErrorMassege = true;
+            }
         }
     }
 }
