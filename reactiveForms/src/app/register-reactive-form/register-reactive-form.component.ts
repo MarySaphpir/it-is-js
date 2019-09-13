@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CheckPasswords } from 'src/app/register-reactive-form/utility-validation-confirmPassword';
-import { CountriesFlag } from 'src/app/register-reactive-form/utility-contry-flag';
+import { countriesAndFlag } from 'src/app/register-reactive-form/utility-contry-flag';
 
 @Component({
     selector: 'app-register-reactive-form',
@@ -10,7 +10,7 @@ import { CountriesFlag } from 'src/app/register-reactive-form/utility-contry-fla
 })
 export class RegisterReactiveFormComponent implements OnInit {
     registerForm: FormGroup;
-    countries = new CountriesFlag();
+    countries = countriesAndFlag;
     submitted = false;
     ErrorMassege = false;
     flagImage = false;
@@ -48,7 +48,7 @@ export class RegisterReactiveFormComponent implements OnInit {
     }
 
     onShowFlag(value: string, event: any) {
-        this.objectCountry = this.countries.getCountry();
+        this.objectCountry = this.countries;
         if (value) {
             const flag = this.objectCountry.find(({ title }) => title === value);
             this.flagSrc = flag
