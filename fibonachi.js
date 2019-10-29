@@ -1,22 +1,29 @@
-function fib1(n) {
-    let a = 1, b = 1, c = 0;
-    for (var i = 3; i <= n; i++) {
-        c = a + b;
-        a = b;
-        b = c;
+function fib1(number) {
+    let firstNumber= 1, secondNumber= 1, sumResult = 0;
+
+    for (let i = 3; i <= number; i++) {
+        sumResult = firstNumber + secondNumber;
+        firstNumber = secondNumber;
+        secondNumber = sumResult;
     }
-    return b;
+
+    return secondNumber;
 }
 
-function fib2(n) {
-    return n <= 2 ? 1 : fib1(n - 1) + fib1(n - 2);
+function fib2(number) {
+    return number <= 2 ? 1 : fib2(number - 1) + fib2(number - 2);
 }
 
-function fib3(n) {
-    if (n > 2) {
-        return fib3(n - 1) + fib3(n - 2);
+function fib3(number) {
+    if (number > 2) {
+        return fib3(number - 1) + fib3(number - 2);
     }
+
     return 1;
+}
+
+function fib4(number) {
+    return Promise.resolve(fib2(number));
 }
 
 console.log(fib1(2));
@@ -33,3 +40,8 @@ console.log(fib3(2));
 console.log(fib3(3));
 console.log(fib3(5));
 console.log(fib3(7));
+
+fib4(2).then(result => console.log(result));
+fib4(3).then(result => console.log(result));
+fib4(5).then(result => console.log(result));
+fib4(7).then(result => console.log(result));

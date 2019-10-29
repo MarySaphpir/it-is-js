@@ -1,9 +1,9 @@
-var obj  = {
+const obj  = {
     property1 : 1,
     property2 : {
         subProperty1 : 2,
-        subproperty2: 3,
-        subproperty3 : {
+        subProperty2 : 3,
+        subProperty3 : {
             subsSubProperty1 : {
                 subSubSubProperty1 : 4,
                 subSubSubProperty2 : 5
@@ -14,7 +14,7 @@ var obj  = {
     },
     property3 : {
         subProperty1 : '8',
-        subproperty2 : {
+        subProperty2 : {
             subsSubProperty1 : {
                 subSubSubProperty1 : '9',
                 subSubSubProperty2 : '10'
@@ -22,23 +22,23 @@ var obj  = {
             subSubProperty1 : '11',
             subSubProperty2 : '12'
         },
-        subproperty3: 13
+        subProperty3: 13
     }
 };
 
-var objL = {
+const objSmall = {
     prop1 : 1,
     prop2 : {
         subProp1 : 2,
         subProp2 : "3"
     },
     prop3 : "4"
-}
+};
 
 function objToString(obj) {
-    var buffer = '';
+    let buffer = '';
     for (key in obj) {
-        if ( typeof obj[key] !== 'object' ||  typeof obj[key] === null) {
+        if ( typeof obj[key] !== 'object' ||  !obj[key] ) {
             buffer += obj[key] + " ";
         } else {
             buffer += objToString(obj[key]);
@@ -47,7 +47,21 @@ function objToString(obj) {
     return buffer;
 }
 
+function objToString1(obj) {
+    let buffer = '';
+
+    Object.keys(obj).forEach(key => {
+        if (typeof obj[key] !== 'object' || typeof obj[key] === null) {
+            buffer += obj[key] + " ";
+        } else {
+            buffer += objToString(obj[key]);
+        }
+    });
+
+    return buffer;
+}
+
 console.log("Итого: ");
-console.log(objToString(obj));
+console.log(objToString1(obj));
 console.log("Итого: ");
-console.log(objToString(objL));
+console.log(objToString1(objSmall));

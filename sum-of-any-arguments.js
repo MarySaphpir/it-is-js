@@ -1,20 +1,20 @@
-function sum(a) {
+function sum(firstArgument) {
 
-    var currentSum = a;
+    let currentSum = firstArgument;
 
-    function f(b) {
-        if (b) {
-            currentSum += b;
-            return f;
+    function innerSum(nextArgument) {
+        if (nextArgument) {
+            currentSum += nextArgument;
+            return innerSum;
         }
-        return f;
+        return innerSum;
     }
 
-    f.toString = function() {
+    innerSum.toString = function() {
         return currentSum;
     };
 
-    return f;
+    return innerSum;
 }
 
 console.log( sum(1)(2)(7)() );
