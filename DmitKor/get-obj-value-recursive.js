@@ -16,11 +16,7 @@ let someObj = {
 let getObjValue = obj => {
     let getValue = currentObj => {
         for(let value in currentObj) {
-            if(typeof(currentObj[value]) === 'object') {
-                getValue(currentObj[value]);
-            } else {
-                console.log(currentObj[value].toString())
-            }
+            typeof(currentObj[value]) === 'object' ? getValue(currentObj[value]) : console.log(currentObj[value].toString());
         }
     }
 
