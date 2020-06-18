@@ -2,7 +2,7 @@ const arrayFirst = [1, 0, 9, 7, 4, -3];
 const arraySecond = [11, 6, -3, 7, 13, 8, 9, 0];
 
 const findCommonElementsInArraysLoopsVariant = (array1, array2) => {
-    let commonElementsArray = [];
+    const commonElementsArray = [];
 
     for(let i = 0; i < array1.length; ++i) {
         for(let j = 0; j < array2.length; ++j) {
@@ -15,7 +15,7 @@ const findCommonElementsInArraysLoopsVariant = (array1, array2) => {
     return commonElementsArray;
 };
 
-const findCommonElementsInArraysFilterMethod = (array1, array2) => array1.filter(value => array2.includes(value) > 0);
+const findCommonElementsInArraysFilterMethod = (array1, array2) => array1.filter(value => array2.includes(value));
 
 console.log(findCommonElementsInArraysLoopsVariant(arrayFirst, arraySecond));
 console.log(findCommonElementsInArraysFilterMethod(arrayFirst, arraySecond));
